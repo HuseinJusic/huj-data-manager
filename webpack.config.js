@@ -57,7 +57,8 @@ Encore
     // enables Sass/SCSS support
     .enableSassLoader()
 
-    // uncomment if you use TypeScript
+
+// uncomment if you use TypeScript
     //.enableTypeScriptLoader()
 
     // uncomment to get integrity="..." attributes on your script & link tags
@@ -71,5 +72,6 @@ Encore
     .enableReactPreset()
     //.addEntry('admin', './assets/js/admin.js')
 ;
+
 
 module.exports = Encore.getWebpackConfig();

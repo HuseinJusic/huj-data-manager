@@ -1,0 +1,23 @@
+@import '../../../css/common/variables';
+
+.button{
+  background-color: $primar-color;
+  width: max-content;
+  border-radius: 15px;
+  transition: all 1s;
+  cursor: pointer;
+
+  &:hover{
+    background-color: $primary-darkend;
+
+    span{
+      color: white;
+    }
+  }
+
+  span{
+    display: inline-block;
+    margin: 10px 20px;
+    transition: all 1s;
+  }
+}
