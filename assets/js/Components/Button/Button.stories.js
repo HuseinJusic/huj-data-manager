@@ -9,7 +9,7 @@ export default {
         mode: {
             control: {
                 type: "select",
-                options: ['primary', 'secondary']
+                options: ['button-primary', 'button-secondary', 'button-warn', 'button-danger', 'button-save', 'none']
             },
         }
     },
@@ -17,20 +17,44 @@ export default {
 
 const Template = (args) => (<Button {...args} />);
 
-
 export const PrimaryButton = Template.bind({});
 
+export const SecondaryButton = Template.bind({});
+
+export const SaveButton = Template.bind({});
+
+export const WarnButton = Template.bind({});
+
+export const DangerButton = Template.bind({});
+
 PrimaryButton.args = {
-    mode: "primary",
+    mode: "button-primary",
     label: "Button",
     backgroundColor: ""
 }
 
-PrimaryButton.parameters = {
-    backgroundColor: {
-        values: [
-            {name: "danger", value: '#0f0'}
-        ]
-    }
+SecondaryButton.args = {
+    mode: "button-secondary",
+    label: "Button",
+    backgroundColor: ""
 }
+
+WarnButton.args = {
+    mode: "button-warn",
+    label: "Button",
+    backgroundColor: ""
+}
+
+SaveButton.args = {
+    mode: "button-save",
+    label: "Button",
+    backgroundColor: ""
+}
+
+DangerButton.args = {
+    mode: "button-danger",
+    label: "Button",
+    backgroundColor: ""
+}
+
 
