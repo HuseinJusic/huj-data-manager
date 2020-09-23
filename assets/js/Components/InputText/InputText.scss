@@ -1,0 +1,28 @@
+@import '../../../css/common/variables';
+
+.InputText{
+  display: flex;
+  flex-direction: column;
+  transition: all 1s;
+  width: max-content;
+
+  .InputTextLabel{
+
+  }
+
+  .InputTextInput{
+    padding: 0 20px;
+    border: none;
+    border-bottom: 2px solid $primar-color;
+    transition: all 1s;
+
+    &:hover{
+      border-bottom: 2px solid $primary-darkend;
+    }
+
+    &:focus{
+      outline: none;
+      border-bottom: 2px solid $primary-darkend;
+    }
+  }
+}
