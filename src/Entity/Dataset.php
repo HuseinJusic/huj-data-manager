@@ -6,11 +6,13 @@ use App\Repository\DatasetRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=DatasetRepository::class)
  */
-class Dataset
+class Dataset implements JsonSerializable
 {
     /**
      * @ORM\Id
@@ -201,5 +203,19 @@ class Dataset
         $this->unit = $unit;
 
         return $this;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'createdAt' => $this->created_at->format('d.m.Y'),
+            'updatedAt' => $this->updated_at->format('d.m.Y'),
+            'isNosql' => $this->is_nosql,
+            'datasetToken' => $this->dataset_token,
+            //'user' => $this->user
+        ];
     }
 }

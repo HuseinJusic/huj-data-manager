@@ -22,19 +22,29 @@ class DatasetRepository extends ServiceEntityRepository
     // /**
     //  * @return Dataset[] Returns an array of Dataset objects
     //  */
-    /*
-    public function findByExampleField($value)
+
+    public function findByUser($userId)
     {
         return $this->createQueryBuilder('d')
-            ->andWhere('d.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('d.id', 'ASC')
-            ->setMaxResults(10)
+            ->Where('d.user = :user')
+            ->setParameter('user', $userId)
+            ->orderBy('d.name', 'DESC')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
+    public function findByIdAndUser($userId, $datasetId){
+        return $this->createQueryBuilder('d')
+            ->andWhere('d.user = :user')
+            ->andWhere('d.id = :datasetId')
+            ->setParameter('user', $userId)
+            ->setParameter('datasetId', $datasetId)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 
     /*
     public function findOneBySomeField($value): ?Dataset

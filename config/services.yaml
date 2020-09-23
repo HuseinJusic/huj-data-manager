@@ -27,5 +27,16 @@ services:
         resource: '../src/Controller/'
         tags: ['controller.service_arguments']
 
+
+    App\Controller\Api\ApiController:
+        arguments: ['@App\Manager\DatasetManager']
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Manager\DatasetManager:
+        arguments: ['@doctrine.orm.entity_manager']
+
+    get_set_method_normalizer:
+        class: Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer
+        tags: [ serializer.normalizer ]
