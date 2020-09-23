@@ -3,7 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -11,7 +14,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity(fields={"username"}, message="There is already an account with this username")
  */
-class User implements UserInterface
+class User implements UserInterface, JsonSerializable
 {
     /**
      * @ORM\Id
@@ -35,6 +38,21 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+    * @ORM\Column(type="string", unique=true, nullable=true)
+    */
+    private $apiToken;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Dataset::class, mappedBy="user")
+     */
+    private $datasets;
+
+    public function __construct()
+    {
+        $this->datasets = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -107,5 +125,61 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getApiToken()
+    {
+        return $this->apiToken;
+    }
+
+    /**
+     * @param mixed $apiToken
+     */
+    public function setApiToken($apiToken): void
+    {
+        $this->apiToken = $apiToken;
+    }
+
+    /**
+     * @return Collection|Dataset[]
+     */
+    public function getDatasets(): Collection
+    {
+        return $this->datasets;
+    }
+
+    public function addDataset(Dataset $dataset): self
+    {
+        if (!$this->datasets->contains($dataset)) {
+            $this->datasets[] = $dataset;
+            $dataset->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDataset(Dataset $dataset): self
+    {
+        if ($this->datasets->contains($dataset)) {
+            $this->datasets->removeElement($dataset);
+            // set the owning side to null (unless already changed)
+            if ($dataset->getUser() === $this) {
+                $dataset->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->username,
+        ];
     }
 }
