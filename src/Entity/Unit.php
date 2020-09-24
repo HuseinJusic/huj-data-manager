@@ -6,11 +6,12 @@ use App\Repository\UnitRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * @ORM\Entity(repositoryClass=UnitRepository::class)
  */
-class Unit
+class Unit implements JsonSerializable
 {
     /**
      * @ORM\Id
@@ -80,5 +81,12 @@ class Unit
         }
 
         return $this;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            "name" => $this->name
+        ];
     }
 }

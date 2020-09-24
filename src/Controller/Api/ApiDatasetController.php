@@ -9,15 +9,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * @Route("/api")
  */
-class ApiController extends AbstractController{
+class ApiDatasetController extends AbstractController{
 
     /**
      * @var DatasetManager
@@ -29,13 +26,6 @@ class ApiController extends AbstractController{
         $this->datasetManager = $datasetManager;
     }
 
-    /**
-     * @Route("/test", name="api_test")
-     */
-    public function test() {
-        $this->datasetManager->showDatasets($this->getUser());
-        return new JsonResponse();
-    }
 
     /**
      * @Route("/v1/dataset/new", name="apiv1newDataset", methods={"POST"})
@@ -44,7 +34,7 @@ class ApiController extends AbstractController{
         $data = json_decode($request->getContent(), true);
 
         return new JsonResponse(
-            ["token" => json_encode($this->datasetManager->createDatasets($this->getUser(), $data)->getDatasetToken())]
+            ["token" => json_encode($this->datasetManager->create($this->getUser(), $data)->getDatasetToken())]
         );
     }
 
@@ -55,16 +45,16 @@ class ApiController extends AbstractController{
         $data = json_decode($request->getContent(), true);
 
         return new JsonResponse(
-            $this->datasetManager->removeDataset($this->getUser(), $data)
+            $this->datasetManager->remove($this->getUser(), $data)
         );
     }
 
     /**
      * @Route("/v1/dataset/list", name="apiv1ListDataset", methods={"GET"})
      */
-    public function listDataset(Request $request, SerializerInterface $serializer) {
+    public function listDataset(Request $request) {
         return new JsonResponse(
-           ["data" => $this->datasetManager->listDatasets($this->getUser())]
+           ["data" => $this->datasetManager->list($this->getUser())]
         );
     }
 

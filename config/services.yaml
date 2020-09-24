@@ -28,14 +28,20 @@ services:
         tags: ['controller.service_arguments']
 
 
-    App\Controller\Api\ApiController:
+    App\Controller\Api\ApiDatasetController:
         arguments: ['@App\Manager\DatasetManager']
+
+    App\Controller\Api\ApiUnitController:
+        arguments: [ '@App\Manager\UnitManager' ]
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
     App\Manager\DatasetManager:
         arguments: ['@doctrine.orm.entity_manager']
+
+    App\Manager\UnitManager:
+        arguments: [ '@doctrine.orm.entity_manager' ]
 
     get_set_method_normalizer:
         class: Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer
