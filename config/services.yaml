@@ -34,6 +34,9 @@ services:
     App\Controller\Api\ApiUnitController:
         arguments: [ '@App\Manager\UnitManager' ]
 
+    App\Controller\Api\ApiDatarowController:
+        arguments: [ '@App\Manager\DatarowManager' ]
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
@@ -42,6 +45,10 @@ services:
 
     App\Manager\UnitManager:
         arguments: [ '@doctrine.orm.entity_manager' ]
+
+    App\Manager\DatarowManager:
+        arguments: [ '@doctrine.orm.entity_manager' ]
+
 
     get_set_method_normalizer:
         class: Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer

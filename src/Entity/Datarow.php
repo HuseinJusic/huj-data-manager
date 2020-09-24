@@ -4,11 +4,12 @@ namespace App\Entity;
 
 use App\Repository\DatarowRepository;
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * @ORM\Entity(repositoryClass=DatarowRepository::class)
  */
-class Datarow
+class Datarow implements JsonSerializable
 {
     /**
      * @ORM\Id
@@ -23,10 +24,21 @@ class Datarow
     private $value;
 
     /**
+     * @ORM\Column(type="datetime", nullable=false)
+     */
+    private $created_at;
+
+    /**
      * @ORM\ManyToOne(targetEntity=Dataset::class, inversedBy="datarows")
      * @ORM\JoinColumn(nullable=false)
      */
     private $dataset;
+
+    public function __construct(){
+        $this->created_at = new \DateTime;
+    }
+
+
 
     public function getId(): ?int
     {
@@ -55,5 +67,26 @@ class Datarow
         $this->dataset = $dataset;
 
         return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $created_at): self
+    {
+        $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            "value" => $this->value,
+            "created" => $this->created_at,
+            "dataset" => $this->dataset
+        ];
     }
 }

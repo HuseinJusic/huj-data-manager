@@ -19,21 +19,40 @@ class DatarowRepository extends ServiceEntityRepository
         parent::__construct($registry, Datarow::class);
     }
 
+
+    public function findByUserAndDataset($user, $dataset)
+    {
+        return $this->createQueryBuilder('d')
+            ->join('d.dataset', "s")
+            ->andWhere('d.dataset = :dataset')
+            ->andWhere('s.user = :user')
+            ->setParameter('dataset', $dataset)
+            ->setParameter('user', $user)
+            ->orderBy('d.created_at', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findByUserAndId($user, $datarowId)
+    {
+        return $this->createQueryBuilder('d')
+            ->join('d.dataset', "s")
+            ->andWhere('d.id = :datarowId')
+            ->andWhere('s.user = :user')
+            ->setParameter('datarowId', $datarowId)
+            ->setParameter('user', $user)
+            ->orderBy('d.created_at', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Datarow[] Returns an array of Datarow objects
     //  */
     /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('d')
-            ->andWhere('d.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('d.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
+
     */
 
     /*
