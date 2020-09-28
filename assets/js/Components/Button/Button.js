@@ -5,7 +5,7 @@ const Button = (props) => {
     return(
         <div
             className={["button", props.mode].join(' ')}
-            onClick={() => console.log("nothing")}
+            onClick={() => props.onClick}
             style={{backgroundColor: props.backgroundColor}}
         >
             <span>{ props.label }</span>

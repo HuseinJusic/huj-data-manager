@@ -3,26 +3,93 @@
 .InputText{
   display: flex;
   flex-direction: column;
-  transition: all 1s;
-  width: max-content;
+  transition: all .3s;
+  width: 100%;
 
   .InputTextLabel{
+    font-size: 20px;
 
   }
 
   .InputTextInput{
     padding: 0 20px;
     border: none;
-    border-bottom: 2px solid $primar-color;
-    transition: all 1s;
+    border: 1px solid #f1f1f1;
+    border-radius: 5px;
+    border-top-left-radius: 0px;
+    border-bottom: 1px solid #f1f1f1;
+    transition: all .3s;
+    height: 2em;
+    font-size: 20px;
 
+    &:hover{
+      border-bottom: 2px solid #f1f1f1;
+
+  }
+    &:focus{
+      outline: none;
+      border-bottom: 2px solid #f1f1f1;
+    }
+  }
+}
+
+.input-text-primary{
+  .InputTextInput{
+    border-bottom: 1px solid $primar-color;
     &:hover{
       border-bottom: 2px solid $primary-darkend;
     }
-
     &:focus{
-      outline: none;
       border-bottom: 2px solid $primary-darkend;
     }
   }
 }
+
+.input-text-secondary{
+  .InputTextInput{
+    border-bottom: 1px solid $secondary-color;
+    &:hover{
+      border-bottom: 2px solid $secondary-darkend;
+    }
+    &:focus{
+      border-bottom: 2px solid $secondary-darkend;
+    }
+  }
+}
+
+.input-text-danger{
+  .InputTextInput{
+    border-bottom: 1px solid $danger-color;
+    &:hover{
+      border-bottom: 2px solid $danger-darkend;
+    }
+    &:focus{
+      border-bottom: 2px solid $danger-darkend;
+    }
+  }
+}
+
+.input-text-warn{
+  .InputTextInput{
+    border-bottom: 1px solid $warn-color;
+    &:hover{
+      border-bottom: 2px solid $warn-darkend;
+    }
+    &:focus{
+      border-bottom: 2px solid $warn-darkend;
+    }
+  }
+}
+
+.input-text-save{
+  .InputTextInput{
+    border-bottom: 1px solid $save-color;
+    &:hover{
+      border-bottom: 2px solid $save-darkend;
+    }
+    &:focus{
+      border-bottom: 2px solid $save-darkend;
+    }
+  }
+}
+
