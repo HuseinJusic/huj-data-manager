@@ -10,7 +10,6 @@ const InputText = (props) => {
             <label className="InputTextLabel">{props.label}</label>
             <input disabled={!props.active} className="InputTextInput" type="text" value={props.value} onChange={(event) => props.onChange(event)}/>
         </div>
-
     );
 }
 
