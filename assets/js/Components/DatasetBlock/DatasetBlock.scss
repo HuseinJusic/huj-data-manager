@@ -5,6 +5,7 @@
   width:100px;
   height: 100px;
 
+
   perspective: 1000px;
 
   &:hover {
@@ -41,15 +42,23 @@
       .dataset-name{
         font-weight: bold;
       }
+
+
     }
 
     .dataset-block-inner-front{
       background-color: #8f8f8f;
+      border-radius: 10px;
     }
 
     .dataset-block-inner-back{
       background-color: #f1f1f1;
+      border-radius: 10px;
       transform: rotateY(180deg);
+
+      label{
+        color:white;
+      }
     }
   }
 }
@@ -61,6 +70,8 @@
     }
 
     .dataset-block-inner-back{
+
+
       background-color: $primary-darkend;
       transform: rotateY(180deg);
     }
