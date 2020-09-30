@@ -1,0 +1,131 @@
+@import '../../../css/common/variables';
+
+.DatasetBlock{
+  background-color: transparent;
+  width:100px;
+  height: 100px;
+
+
+  perspective: 1000px;
+
+  &:hover {
+    .dataset-block-inner{
+      transform: rotateY(180deg);
+    }
+  }
+
+  .dataset-block-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+
+
+
+    .dataset-block-inner-front, .dataset-block-inner-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden; /* Safari */
+      backface-visibility: hidden;
+    }
+
+    .dataset-block-inner-box{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      flex-direction: column;
+
+      .dataset-name{
+        font-weight: bold;
+      }
+
+
+    }
+
+    .dataset-block-inner-front{
+      background-color: #8f8f8f;
+      border-radius: 10px;
+    }
+
+    .dataset-block-inner-back{
+      background-color: #f1f1f1;
+      border-radius: 10px;
+      transform: rotateY(180deg);
+
+      label{
+        color:white;
+      }
+    }
+  }
+}
+
+.dataset-block-primary{
+  .dataset-block-inner {
+    .dataset-block-inner-front{
+      background-color: $primar-color;
+    }
+
+    .dataset-block-inner-back{
+
+
+      background-color: $primary-darkend;
+      transform: rotateY(180deg);
+    }
+  }
+}
+
+.dataset-block-secondary{
+  .dataset-block-inner {
+    .dataset-block-inner-front{
+      background-color: $secondary-color;
+    }
+
+    .dataset-block-inner-back{
+      background-color: $secondary-darkend;
+      transform: rotateY(180deg);
+    }
+  }
+}
+
+.dataset-block-warn{
+  .dataset-block-inner {
+    .dataset-block-inner-front{
+      background-color: $warn-color;
+    }
+
+    .dataset-block-inner-back{
+      background-color: $warn-darkend;
+      transform: rotateY(180deg);
+    }
+  }
+}
+
+.dataset-block-danger{
+  .dataset-block-inner {
+    .dataset-block-inner-front{
+      background-color: $danger-color;
+    }
+
+    .dataset-block-inner-back{
+      background-color: $danger-darkend;
+      transform: rotateY(180deg);
+    }
+  }
+}
+
+.dataset-block-save{
+  .dataset-block-inner {
+    .dataset-block-inner-front{
+      background-color: $save-color;
+    }
+
+    .dataset-block-inner-back{
+      background-color: $save-darkend;
+      transform: rotateY(180deg);
+    }
+  }
+}

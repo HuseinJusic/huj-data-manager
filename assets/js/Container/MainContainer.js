@@ -1,11 +1,13 @@
 import React from 'react';
 
+import Button from '../Components/Button/Button'
+
 const MainContainer = () => {
 
         return(
             <div className="container-row">
                     <div className="sidebar r-02 container-column">
-                        <div>sidebar el 1</div>
+                        <div><Button label={"JEBOTEEEE"}/></div>
                         <div>sidebar el 2</div>
                         <div>sidebar el 3</div>
                     </div>

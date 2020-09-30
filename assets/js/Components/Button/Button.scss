@@ -1,0 +1,58 @@
+@import '../../../css/common/variables';
+
+.button{
+  background-color: $neutral-color;
+  width: max-content;
+  border-radius: 15px;
+  transition: all .5s;
+  cursor: pointer;
+
+  &:hover{
+    background-color: $neutral-darkend;
+
+    span{
+      color: white;
+    }
+  }
+
+  span{
+    display: inline-block;
+    margin: 10px 20px;
+    transition: all 1s;
+  }
+}
+
+.button-primary{
+  background-color: $primar-color;
+  &:hover{
+    background-color: $primary-darkend;
+  }
+}
+
+.button-secondary{
+  background-color: $secondary-color;
+  &:hover{
+    background-color: $secondary-darkend;
+  }
+}
+
+.button-danger{
+  background-color: $danger-color;
+  &:hover{
+    background-color: $danger-darkend;
+  }
+}
+
+.button-warn{
+  background-color: $warn-color;
+  &:hover{
+    background-color: $warn-darkend;
+  }
+}
+
+.button-save{
+  background-color: $save-color;
+  &:hover{
+    background-color: $save-darkend;
+  }
+}
