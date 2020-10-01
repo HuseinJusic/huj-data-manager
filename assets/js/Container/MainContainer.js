@@ -5,6 +5,7 @@ import Menu from "../Components/Menu/Menu";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDatabase, faMale, faBell, faInfo } from '@fortawesome/free-solid-svg-icons'
+import DashboardCard from "./DashboardCard/DashboardCard";
 
 const MainContainer = () => {
 
@@ -40,17 +41,19 @@ const MainContainer = () => {
                     </Menu>
 
                     <div className={menuToggledWidth + " main container-row"}>
-                        <div className="r-02">r1</div>
-                        <div className="r-06">r1</div>
-                        <div className="r-02">r1</div>
+                        <DashboardCard class={"r-10"}>
+                            hello
+                        </DashboardCard>
+                        <DashboardCard class={"r-05"}>
+                            hello
+                        </DashboardCard>
+                        <DashboardCard class={"r-05"}>
+                            hello
+                        </DashboardCard>
+                        <DashboardCard class={"r-10"}>
+                            hello
+                        </DashboardCard>
 
-                        <div className="r-08">r2</div>
-                        <div className="r-01">r2</div>
-                        <div className="r-01">r2</div>
-
-                        <div className="r-07">r3</div>
-                        <div className="r-02">r3</div>
-                        <div className="r-01">r3</div>
                     </div>
 
             </div>
