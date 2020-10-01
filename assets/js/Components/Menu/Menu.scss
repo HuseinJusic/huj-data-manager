@@ -1,0 +1,58 @@
+@import '../../../css/common/variables';
+
+.Menu{
+
+  transition: all .5s;
+  .Menu-body{
+    height:100%;
+    width:100%;
+    background-color: $primar-color;
+
+    .Menu-body-toggler{
+      transition: all .5s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height:50px;
+
+      font-size: 30px;
+      color: white;
+
+      &:hover{
+        //color: $primary-darkend;
+        background-color: $primary-darkend;
+      }
+
+      svg{
+        width:30px;
+      }
+
+      span{
+        font-size: 20px;
+        margin-left:20px;
+        display: none;
+      }
+    }
+  }
+}
+.menu-untoggled{
+  width: 5%
+}
+
+.menu-toggled{
+  width: 20%;
+  .Menu-body{
+
+    .Menu-body-toggler{
+      justify-content: flex-start;
+
+      svg{
+        margin-left: 20px;
+      }
+
+      span{
+        display: unset;
+      }
+    }
+  }
+}

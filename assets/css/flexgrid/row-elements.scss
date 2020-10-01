@@ -37,3 +37,13 @@
 .r-10{
   width: 100%;
 }
+
+.menu-side-untoggled{
+ transition: all .5s;
+  width: 95%
+}
+
+.menu-side-toggled{
+  transition: all .5s;
+  width: 80%
+}
