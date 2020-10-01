@@ -6,6 +6,7 @@ import Menu from "../Components/Menu/Menu";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDatabase, faMale, faBell, faInfo } from '@fortawesome/free-solid-svg-icons'
 import DashboardCard from "./DashboardCard/DashboardCard";
+import DatasetBlock from "../Components/DatasetBlock/DatasetBlock";
 
 const MainContainer = () => {
 
@@ -42,7 +43,42 @@ const MainContainer = () => {
 
                     <div className={menuToggledWidth + " main container-row"}>
                         <DashboardCard class={"r-10"}>
-                            hello
+                            <div className={"container-row container-padding-20"}>
+                                <DatasetBlock
+                                    created="01.01.2020"
+                                    mode="dataset-block-primary"
+                                    name="Dataset 1"
+                                    total={600}
+                                />
+
+                                <DatasetBlock
+                                    created="01.01.2020"
+                                    mode="dataset-block-primary"
+                                    name="Dataset 1"
+                                    total={600}
+                                />
+
+                                <DatasetBlock
+                                    created="01.01.2020"
+                                    mode="dataset-block-primary"
+                                    name="Dataset 1"
+                                    total={600}
+                                />
+
+                                <DatasetBlock
+                                    created="01.01.2020"
+                                    mode="dataset-block-primary"
+                                    name="Dataset 1"
+                                    total={600}
+                                />
+
+                                <DatasetBlock
+                                    created="01.01.2020"
+                                    mode="dataset-block-primary"
+                                    name="Dataset 1"
+                                    total={600}
+                                />
+                            </div>
                         </DashboardCard>
                         <DashboardCard class={"r-05"}>
                             hello
