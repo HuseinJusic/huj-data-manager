@@ -8,7 +8,19 @@ import { faDatabase, faMale, faBell, faInfo } from '@fortawesome/free-solid-svg-
 import DashboardCard from "./DashboardCard/DashboardCard";
 import DatasetBlock from "../Components/DatasetBlock/DatasetBlock";
 
-const MainContainer = () => {
+import {Link} from "react-router-dom";
+import { Route, Switch } from "react-router";
+import DashboardContainer from "./DashboardContainer/DashboardContainer";
+import ProfileContainer from "./ProfileContainer/ProfileContainer";
+
+import * as userActions from '../store/reducers/User/actions';
+
+
+import { connect }from "react-redux";
+
+const MainContainer = (props) => {
+
+    props.getUser();
 
         let [menuToggledWidth, setMenuToggledWidth] = useState('menu-side-untoggled');
 
@@ -27,73 +39,41 @@ const MainContainer = () => {
                         class={"sidebar container-column"}
                         handleMenuToggle={handleMenuToggle}
                     >
-                        <div className={"Menu-body-toggler"}><FontAwesomeIcon icon={faDatabase} />
+                        <Link to="/"> <div className={"Menu-body-toggler"}><FontAwesomeIcon icon={faDatabase} />
                             <span>Datensätze</span>
-                        </div>
-                        <div className={"Menu-body-toggler"}><FontAwesomeIcon icon={faMale} />
-                            <span>Datensätze</span>
-                        </div>
+                        </div></Link>
+
+                        <Link to="/profile"><div className={"Menu-body-toggler"}><FontAwesomeIcon icon={faMale} />
+                            <span>Profil</span>
+                        </div></Link>
+
                         <div className={"Menu-body-toggler"}><FontAwesomeIcon icon={faBell} />
                             <span>Datensätze</span>
                         </div>
                         <div className={"Menu-body-toggler"}><FontAwesomeIcon icon={faInfo} />
-                            <span>Datensätze</span>
+                            <span>Info</span>
                         </div>
                     </Menu>
 
-                    <div className={menuToggledWidth + " main container-row"}>
-                        <DashboardCard class={"r-10"}>
-                            <div className={"container-row container-padding-20"}>
-                                <DatasetBlock
-                                    created="01.01.2020"
-                                    mode="dataset-block-primary"
-                                    name="Dataset 1"
-                                    total={600}
-                                />
+                <div className={menuToggledWidth + " main container-row"}>
+                    <Switch>
+                        <Route exact path="/" component={DashboardContainer} />
+                        <Route path="/profile" component={ProfileContainer} />
+                    </Switch>
+                </div>
 
-                                <DatasetBlock
-                                    created="01.01.2020"
-                                    mode="dataset-block-primary"
-                                    name="Dataset 1"
-                                    total={600}
-                                />
-
-                                <DatasetBlock
-                                    created="01.01.2020"
-                                    mode="dataset-block-primary"
-                                    name="Dataset 1"
-                                    total={600}
-                                />
-
-                                <DatasetBlock
-                                    created="01.01.2020"
-                                    mode="dataset-block-primary"
-                                    name="Dataset 1"
-                                    total={600}
-                                />
-
-                                <DatasetBlock
-                                    created="01.01.2020"
-                                    mode="dataset-block-primary"
-                                    name="Dataset 1"
-                                    total={600}
-                                />
-                            </div>
-                        </DashboardCard>
-                        <DashboardCard class={"r-05"}>
-                            hello
-                        </DashboardCard>
-                        <DashboardCard class={"r-05"}>
-                            hello
-                        </DashboardCard>
-                        <DashboardCard class={"r-10"}>
-                            hello
-                        </DashboardCard>
-
-                    </div>
 
             </div>
         )
 }
 
-export default MainContainer;
+const mapStateToProps = state => ({ user: state.user.user })
+
+const mapDispatchToProps = dispatch => {
+    return {
+        // dispatching plain actions
+        getUser: () => dispatch(userActions.getUser()),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
