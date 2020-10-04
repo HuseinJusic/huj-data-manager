@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HujDataManagerController extends AbstractController
 {
     /**
-     * @Route("/{reactRouting}", name="index", requirements={"reactRouting"="^(?!api).+"}, defaults={"reactRouting": null})
+     * @Route("/{reactRouting}", name="index", requirements={"reactRouting"="^(?!api)^(?!login).+"}, defaults={"reactRouting": null},  name="huj_data_manager")
      */
     public function index()
     {

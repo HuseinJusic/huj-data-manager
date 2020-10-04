@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 
 import Button from '../Components/Button/Button'
 import Menu from "../Components/Menu/Menu";
@@ -14,13 +14,23 @@ import DashboardContainer from "./DashboardContainer/DashboardContainer";
 import ProfileContainer from "./ProfileContainer/ProfileContainer";
 
 import * as userActions from '../store/reducers/User/actions';
+import * as datasetActions from '../store/reducers/Dataset/actions';
 
 
 import { connect }from "react-redux";
 
 const MainContainer = (props) => {
 
-    props.getUser();
+    useEffect(() => {
+        props.getApiToken()
+
+    }, [])
+
+    useEffect(() => {
+        if(props.user.apiToken){
+            props.getDatasets(props.user.apiToken);
+        }
+    }, [props.user.apiToken])
 
         let [menuToggledWidth, setMenuToggledWidth] = useState('menu-side-untoggled');
 
@@ -67,12 +77,18 @@ const MainContainer = (props) => {
         )
 }
 
-const mapStateToProps = state => ({ user: state.user.user })
+const mapStateToProps = state => (
+    {
+        user: state.user,
+        dataset: state.dataset
+    }
+    );
 
 const mapDispatchToProps = dispatch => {
     return {
         // dispatching plain actions
-        getUser: () => dispatch(userActions.getUser()),
+        getApiToken: () => dispatch(userActions.getApiToken()),
+        getDatasets: (token) => dispatch(datasetActions.getDatasets(token))
     }
 }
 

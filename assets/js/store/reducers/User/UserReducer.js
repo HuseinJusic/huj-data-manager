@@ -1,16 +1,23 @@
 import * as actions from './actions'
 
 const initState = {
-    user: null
+    user: null,
+    apiToken: null
 }
 
 const UserReducer = (state = initState, action) => {
     switch (action.type) {
         case actions.GET_USER:
-            console.log(action);
+
             return {
                 ...state,
 
+            }
+        case actions.GET_API_TOKEN:
+
+            return{
+                ...state,
+                apiToken: action.payload
             }
         default:
             return state;

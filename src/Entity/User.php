@@ -180,6 +180,7 @@ class User implements UserInterface, JsonSerializable
         return [
             'id' => $this->id,
             'name' => $this->username,
+            'apiToken' => $this->apiToken
         ];
     }
 }
