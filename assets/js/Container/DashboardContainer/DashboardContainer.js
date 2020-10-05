@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import DatasetBlock from "../../Components/DatasetBlock/DatasetBlock";
-import DashboardCard from "../DashboardCard/DashboardCard";
-import * as userActions from "../../store/reducers/User/actions";
-import * as datasetActions from "../../store/reducers/Dataset/actions";
+import DashboardCard from "../DashboardCards/DashboardCard/DashboardCard";
+
 import {connect} from "react-redux";
 import AUX from "../AUX/AUX";
+import WelcomeCard from "../DashboardCards/WelcomeCard/WelcomeCard";
 
 const DashboardContainer = (props) => {
 
@@ -33,18 +33,27 @@ const DashboardContainer = (props) => {
                     datasets: <div>Loading</div>
                 });
             }
-
-
     }, [props.dataset])
+
+    useEffect(() => {
+        if(!props.user.isLoading){
+            setData({ ...data,
+                userData: <WelcomeCard class="r-05" user={props.user.user} />
+            });
+        }else{
+            setData({
+                ...data,
+                userData: <div>Loading</div>
+            });
+        }
+    }, [props.user])
+
+
 
     return(
         <AUX>
 
-            <DashboardCard class={"r-05"}>
-                <div className={"container-row container-padding-20"}>
-                    User Data Greeting etc
-                </div>
-            </ DashboardCard >
+            { data.userData }
 
             <DashboardCard class={"r-05"}>
                 <div className={"container-row container-padding-20"}>

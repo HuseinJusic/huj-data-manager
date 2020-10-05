@@ -2,7 +2,8 @@ import * as actions from './actions'
 
 const initState = {
     user: null,
-    apiToken: null
+    apiToken: null,
+    isLoading: true
 }
 
 const UserReducer = (state = initState, action) => {
@@ -11,7 +12,8 @@ const UserReducer = (state = initState, action) => {
 
             return {
                 ...state,
-
+                isLoading: false,
+                user: action.payload
             }
         case actions.GET_API_TOKEN:
 

@@ -178,9 +178,7 @@ class User implements UserInterface, JsonSerializable
     public function jsonSerialize()
     {
         return [
-            'id' => $this->id,
             'name' => $this->username,
-            'apiToken' => $this->apiToken
         ];
     }
 }

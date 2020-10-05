@@ -5,8 +5,7 @@ import Menu from "../Components/Menu/Menu";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDatabase, faMale, faBell, faInfo } from '@fortawesome/free-solid-svg-icons'
-import DashboardCard from "./DashboardCard/DashboardCard";
-import DatasetBlock from "../Components/DatasetBlock/DatasetBlock";
+
 
 import {Link} from "react-router-dom";
 import { Route, Switch } from "react-router";
@@ -22,13 +21,13 @@ import { connect }from "react-redux";
 const MainContainer = (props) => {
 
     useEffect(() => {
-        props.getApiToken()
-
+        props.getApiToken();
     }, [])
 
     useEffect(() => {
         if(props.user.apiToken){
             props.getDatasets(props.user.apiToken);
+            props.getUserData(props.user.apiToken);
         }
     }, [props.user.apiToken])
 
@@ -88,7 +87,8 @@ const mapDispatchToProps = dispatch => {
     return {
         // dispatching plain actions
         getApiToken: () => dispatch(userActions.getApiToken()),
-        getDatasets: (token) => dispatch(datasetActions.getDatasets(token))
+        getDatasets: (token) => dispatch(datasetActions.getDatasets(token)),
+        getUserData: (token) => dispatch(userActions.getUserData(token))
     }
 }
 
