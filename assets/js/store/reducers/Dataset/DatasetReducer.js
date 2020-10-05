@@ -13,6 +13,12 @@ const DatasetReducer = (state = initState, action) => {
                 datasets: action.payload.data,
                 isLoading: false
             }
+
+        case actions.SET_LOADING:
+            return {
+                ...state,
+                isLoading: true
+            }
         default:
             return state;
     }

@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 import DatasetBlock from "../../Components/DatasetBlock/DatasetBlock";
 import DashboardCard from "../DashboardCards/DashboardCard/DashboardCard";
 
+import * as dataActions from '../../store/reducers/Dataset/actions';
+
 import {connect} from "react-redux";
 import AUX from "../AUX/AUX";
 import WelcomeCard from "../DashboardCards/WelcomeCard/WelcomeCard";
+import * as datasetActions from "../../store/reducers/Dataset/actions";
 
 const DashboardContainer = (props) => {
 
@@ -12,6 +15,16 @@ const DashboardContainer = (props) => {
         datasets: null,
         userData: null
     });
+    useEffect(() => {
+        if(!props.dataset.isLoading && data.datasets === null){
+            props.setDataLoading()
+            props.getDatasets(props.user.apiToken)
+        }
+        setData({
+            ...data,
+            datasets: "what the shit"
+        })
+    }, []);
 
     useEffect(() => {
             if(!props.dataset.isLoading){
@@ -27,7 +40,7 @@ const DashboardContainer = (props) => {
                         )
                     }
                 );
-            }else{
+            } else{
                 setData({
                     ...data,
                     datasets: <div>Loading</div>
@@ -78,7 +91,6 @@ const DashboardContainer = (props) => {
 
 const mapStateToProps = state => (
     {
-        //user: state.user,
         dataset: state.dataset,
         user: state.user
     }
@@ -86,7 +98,8 @@ const mapStateToProps = state => (
 
 const mapDispatchToProps = dispatch => {
     return {
-
+        getDatasets: (token) => dispatch(datasetActions.getDatasets(token)),
+        setDataLoading: () => dispatch(dataActions.setIsLoading())
     }
 }
 

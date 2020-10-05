@@ -1,4 +1,5 @@
 export const GET_DATASETS = 'GET_DATASETS'
+export const SET_LOADING = 'SET_LOADING'
 
 export const getDatasets = (token) => async dispatch => {
     try {
@@ -19,3 +20,10 @@ export const getDatasets = (token) => async dispatch => {
 
     }
 }
+
+export const setIsLoading = () => ({
+
+        type: SET_LOADING,
+        payload: null
+
+});
