@@ -29,6 +29,7 @@ export const InputTextSecondary = Template.bind({});
 export const InputTextWarn = Template.bind({});
 export const InputTextDanger = Template.bind({});
 export const InputTextSave = Template.bind({});
+export const InputTextSecretToggle = Template.bind({});
 
 InputTextBasic.args = {
 
@@ -63,6 +64,15 @@ InputTextSave.args = {
     label: "Textinput",
     active: true
 }
+
+InputTextSecretToggle.args = {
+    mode: 'input-text-save',
+    label: "Textinput",
+    active: true,
+    secretToggle: true,
+    secret: true
+}
+
 
 
 

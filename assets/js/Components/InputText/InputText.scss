@@ -11,84 +11,165 @@
 
   }
 
-  .InputTextInput{
-    padding: 0 20px;
-    border: none;
+  .InputTextContainer{
+    width:100%;
+
+    .InputTextInput{
+      width:calc(100% - 40px);
+      padding: 0 20px;
+      border: none;
+      border: 1px solid #f1f1f1;
+      border-radius: 5px;
+      border-top-left-radius: 0px;
+      border-bottom: 1px solid #f1f1f1;
+      transition: all .3s;
+      height: 2em;
+      font-size: 20px;
+
+      &:hover{
+        border-bottom: 2px solid #f1f1f1;
+
+      }
+      &:focus{
+        outline: none;
+        border-bottom: 2px solid #f1f1f1;
+      }
+    }
+  }
+
+}
+
+.TextInputSecretToggle{
+  display: flex;
+
+  .SecretToggler{
+    width: 50px;
     border: 1px solid #f1f1f1;
-    border-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
     border-top-left-radius: 0px;
-    border-bottom: 1px solid #f1f1f1;
-    transition: all .3s;
-    height: 2em;
-    font-size: 20px;
+
+    font-size:20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &:hover{
-      border-bottom: 2px solid #f1f1f1;
-
-  }
-    &:focus{
-      outline: none;
-      border-bottom: 2px solid #f1f1f1;
+      background-color: $neutral-color;
     }
   }
 }
 
 .input-text-primary{
-  .InputTextInput{
-    border-bottom: 1px solid $primar-color;
-    &:hover{
-      border-bottom: 2px solid $primary-darkend;
+  .InputTextContainer{
+    .InputTextInput{
+      border-bottom: 1px solid $primar-color;
+      &:hover{
+        border-bottom: 2px solid $primary-darkend;
+      }
+      &:focus{
+        border-bottom: 2px solid $primary-darkend;
+      }
     }
-    &:focus{
-      border-bottom: 2px solid $primary-darkend;
+
+  }
+
+  .TextInputSecretToggle{
+    .SecretToggler{
+      &:hover{
+        background-color: $primar-color;
+      }
     }
   }
 }
 
 .input-text-secondary{
-  .InputTextInput{
-    border-bottom: 1px solid $secondary-color;
-    &:hover{
-      border-bottom: 2px solid $secondary-darkend;
+  .InputTextContainer{
+    .InputTextInput{
+      border-bottom: 1px solid $secondary-color;
+      &:hover{
+        border-bottom: 2px solid $secondary-darkend;
+      }
+      &:focus{
+        border-bottom: 2px solid $secondary-darkend;
+      }
     }
-    &:focus{
-      border-bottom: 2px solid $secondary-darkend;
+
+  }
+
+  .TextInputSecretToggle{
+    .SecretToggler{
+      &:hover{
+        background-color: $secondary-color;
+      }
     }
   }
 }
 
 .input-text-danger{
-  .InputTextInput{
-    border-bottom: 1px solid $danger-color;
-    &:hover{
-      border-bottom: 2px solid $danger-darkend;
+  .InputTextContainer{
+    .InputTextInput{
+      border-bottom: 1px solid $danger-color;
+      &:hover{
+        border-bottom: 2px solid $danger-darkend;
+      }
+      &:focus{
+        border-bottom: 2px solid $danger-darkend;
+      }
     }
-    &:focus{
-      border-bottom: 2px solid $danger-darkend;
+
+  }
+
+  .TextInputSecretToggle{
+    .SecretToggler{
+      &:hover{
+        background-color: $danger-color;
+      }
     }
   }
 }
 
 .input-text-warn{
-  .InputTextInput{
-    border-bottom: 1px solid $warn-color;
-    &:hover{
-      border-bottom: 2px solid $warn-darkend;
+  .InputTextContainer{
+    .InputTextInput{
+      border-bottom: 1px solid $warn-color;
+      &:hover{
+        border-bottom: 2px solid $warn-darkend;
+      }
+      &:focus{
+        border-bottom: 2px solid $warn-darkend;
+      }
     }
-    &:focus{
-      border-bottom: 2px solid $warn-darkend;
+
+  }
+
+  .TextInputSecretToggle{
+    .SecretToggler{
+      &:hover{
+        background-color: $warn-color;
+      }
     }
   }
 }
 
 .input-text-save{
-  .InputTextInput{
-    border-bottom: 1px solid $save-color;
-    &:hover{
-      border-bottom: 2px solid $save-darkend;
+  .InputTextContainer{
+    .InputTextInput{
+      border-bottom: 1px solid $save-color;
+      &:hover{
+        border-bottom: 2px solid $save-darkend;
+      }
+      &:focus{
+        border-bottom: 2px solid $save-darkend;
+      }
     }
-    &:focus{
-      border-bottom: 2px solid $save-darkend;
+  }
+
+  .TextInputSecretToggle{
+    .SecretToggler{
+      &:hover{
+        background-color: $save-color;
+      }
     }
   }
 }
